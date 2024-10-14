@@ -20,6 +20,7 @@
         private BindingList<MessageBase> bindingList;
 
         protected DataGridViewColumn PayloadColumn => this.dataGridView1.Columns["Payload"];
+        protected DataGridViewColumn DataColumn => this.dataGridView1.Columns["Data"];
 
         private void UpdateMultilineMode()
         {
@@ -185,6 +186,7 @@
                 line += $"{CsvifyText(message.ErrorText)},";
                 line += $"{CsvifyText(message.TypeText)},";
                 line += $"{CsvifyText(message.Payload)}";
+                line += $"{CsvifyText(message.Data)}";
 
                 File.AppendAllLines(path, new string[] { line });
             }

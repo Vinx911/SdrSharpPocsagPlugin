@@ -30,7 +30,7 @@ namespace SdrsDecoder.Plugin
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             dataGridView1 = new System.Windows.Forms.DataGridView();
             Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Protocol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,6 +38,7 @@ namespace SdrsDecoder.Plugin
             Errors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Payload = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             checkBoxDeDuplicate = new System.Windows.Forms.CheckBox();
             checkBoxHideBad = new System.Windows.Forms.CheckBox();
             buttonClear = new System.Windows.Forms.Button();
@@ -59,12 +60,11 @@ namespace SdrsDecoder.Plugin
             dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Timestamp, Protocol, Address, Errors, Type, Payload });
-            dataGridView1.Location = new System.Drawing.Point(0, 30);
+            dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Timestamp, Protocol, Address, Errors, Type, Payload, Data });
+            dataGridView1.Location = new System.Drawing.Point(0, 34);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new System.Drawing.Size(1418, 381);
+            dataGridView1.Size = new System.Drawing.Size(1418, 432);
             dataGridView1.TabIndex = 0;
             // 
             // Timestamp
@@ -73,7 +73,7 @@ namespace SdrsDecoder.Plugin
             Timestamp.HeaderText = "Timestamp";
             Timestamp.Name = "Timestamp";
             Timestamp.ReadOnly = true;
-            Timestamp.Width = 91;
+            Timestamp.Width = 97;
             // 
             // Protocol
             // 
@@ -81,17 +81,17 @@ namespace SdrsDecoder.Plugin
             Protocol.HeaderText = "Protocol";
             Protocol.Name = "Protocol";
             Protocol.ReadOnly = true;
-            Protocol.Width = 77;
+            Protocol.Width = 82;
             // 
             // Address
             // 
             Address.DataPropertyName = "Address";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            Address.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            Address.DefaultCellStyle = dataGridViewCellStyle1;
             Address.HeaderText = "Address";
             Address.Name = "Address";
             Address.ReadOnly = true;
-            Address.Width = 74;
+            Address.Width = 81;
             // 
             // Errors
             // 
@@ -99,7 +99,7 @@ namespace SdrsDecoder.Plugin
             Errors.HeaderText = "Error(s)";
             Errors.Name = "Errors";
             Errors.ReadOnly = true;
-            Errors.Width = 70;
+            Errors.Width = 77;
             // 
             // Type
             // 
@@ -107,22 +107,30 @@ namespace SdrsDecoder.Plugin
             Type.HeaderText = "Type";
             Type.Name = "Type";
             Type.ReadOnly = true;
-            Type.Width = 56;
+            Type.Width = 61;
             // 
             // Payload
             // 
-            Payload.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             Payload.DataPropertyName = "Payload";
             Payload.HeaderText = "Payload";
             Payload.Name = "Payload";
             Payload.ReadOnly = true;
+            Payload.Width = 79;
+            // 
+            // Data
+            // 
+            Data.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            Data.DataPropertyName = "Data";
+            Data.HeaderText = "Data";
+            Data.Name = "Data";
+            Data.ReadOnly = true;
             // 
             // checkBoxDeDuplicate
             // 
             checkBoxDeDuplicate.AutoSize = true;
-            checkBoxDeDuplicate.Location = new System.Drawing.Point(5, 5);
+            checkBoxDeDuplicate.Location = new System.Drawing.Point(5, 6);
             checkBoxDeDuplicate.Name = "checkBoxDeDuplicate";
-            checkBoxDeDuplicate.Size = new System.Drawing.Size(94, 19);
+            checkBoxDeDuplicate.Size = new System.Drawing.Size(101, 21);
             checkBoxDeDuplicate.TabIndex = 1;
             checkBoxDeDuplicate.Text = "De-duplicate";
             checkBoxDeDuplicate.UseVisualStyleBackColor = true;
@@ -130,9 +138,9 @@ namespace SdrsDecoder.Plugin
             // checkBoxHideBad
             // 
             checkBoxHideBad.AutoSize = true;
-            checkBoxHideBad.Location = new System.Drawing.Point(106, 5);
+            checkBoxHideBad.Location = new System.Drawing.Point(106, 6);
             checkBoxHideBad.Name = "checkBoxHideBad";
-            checkBoxHideBad.Size = new System.Drawing.Size(121, 19);
+            checkBoxHideBad.Size = new System.Drawing.Size(135, 21);
             checkBoxHideBad.TabIndex = 2;
             checkBoxHideBad.Text = "Hide bad decodes";
             checkBoxHideBad.UseVisualStyleBackColor = true;
@@ -140,9 +148,9 @@ namespace SdrsDecoder.Plugin
             // buttonClear
             // 
             buttonClear.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            buttonClear.Location = new System.Drawing.Point(1337, 3);
+            buttonClear.Location = new System.Drawing.Point(1342, 3);
             buttonClear.Name = "buttonClear";
-            buttonClear.Size = new System.Drawing.Size(75, 23);
+            buttonClear.Size = new System.Drawing.Size(75, 26);
             buttonClear.TabIndex = 3;
             buttonClear.Text = "Clear";
             toolTip1.SetToolTip(buttonClear, "Clear all entries from the table");
@@ -151,9 +159,9 @@ namespace SdrsDecoder.Plugin
             // checkBoxMultiline
             // 
             checkBoxMultiline.AutoSize = true;
-            checkBoxMultiline.Location = new System.Drawing.Point(234, 5);
+            checkBoxMultiline.Location = new System.Drawing.Point(234, 6);
             checkBoxMultiline.Name = "checkBoxMultiline";
-            checkBoxMultiline.Size = new System.Drawing.Size(99, 19);
+            checkBoxMultiline.Size = new System.Drawing.Size(110, 21);
             checkBoxMultiline.TabIndex = 4;
             checkBoxMultiline.Text = "Wrap payload";
             checkBoxMultiline.UseVisualStyleBackColor = true;
@@ -165,9 +173,9 @@ namespace SdrsDecoder.Plugin
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(415, 6);
+            label1.Location = new System.Drawing.Point(415, 7);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(38, 15);
+            label1.Size = new System.Drawing.Size(43, 17);
             label1.TabIndex = 5;
             label1.Text = "Mode";
             // 
@@ -176,15 +184,15 @@ namespace SdrsDecoder.Plugin
             modeSelector.FormattingEnabled = true;
             modeSelector.Location = new System.Drawing.Point(459, 3);
             modeSelector.Name = "modeSelector";
-            modeSelector.Size = new System.Drawing.Size(196, 23);
+            modeSelector.Size = new System.Drawing.Size(196, 25);
             modeSelector.TabIndex = 6;
             // 
             // checkBoxLogging
             // 
             checkBoxLogging.AutoSize = true;
-            checkBoxLogging.Location = new System.Drawing.Point(339, 5);
+            checkBoxLogging.Location = new System.Drawing.Point(339, 6);
             checkBoxLogging.Name = "checkBoxLogging";
-            checkBoxLogging.Size = new System.Drawing.Size(70, 19);
+            checkBoxLogging.Size = new System.Drawing.Size(75, 21);
             checkBoxLogging.TabIndex = 7;
             checkBoxLogging.Text = "Logging";
             checkBoxLogging.UseVisualStyleBackColor = true;
@@ -192,23 +200,22 @@ namespace SdrsDecoder.Plugin
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(661, 6);
+            label2.Location = new System.Drawing.Point(661, 7);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(33, 15);
+            label2.Size = new System.Drawing.Size(36, 17);
             label2.TabIndex = 8;
             label2.Text = "Filter";
             // 
             // textBoxFilter
             // 
-            textBoxFilter.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             textBoxFilter.Location = new System.Drawing.Point(700, 3);
             textBoxFilter.Name = "textBoxFilter";
-            textBoxFilter.Size = new System.Drawing.Size(631, 23);
+            textBoxFilter.Size = new System.Drawing.Size(200, 23);
             textBoxFilter.TabIndex = 9;
             // 
             // PocsagControl
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             Controls.Add(textBoxFilter);
             Controls.Add(label2);
@@ -221,7 +228,7 @@ namespace SdrsDecoder.Plugin
             Controls.Add(checkBoxDeDuplicate);
             Controls.Add(dataGridView1);
             Name = "PocsagControl";
-            Size = new System.Drawing.Size(1418, 411);
+            Size = new System.Drawing.Size(1418, 466);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -234,16 +241,17 @@ namespace SdrsDecoder.Plugin
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.CheckBox checkBoxMultiline;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox modeSelector;
+        private System.Windows.Forms.CheckBox checkBoxLogging;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxFilter;
         private System.Windows.Forms.DataGridViewTextBoxColumn Timestamp;
         private System.Windows.Forms.DataGridViewTextBoxColumn Protocol;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn Errors;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn Payload;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox modeSelector;
-        private System.Windows.Forms.CheckBox checkBoxLogging;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxFilter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Data;
     }
 }

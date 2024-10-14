@@ -30,6 +30,8 @@
 
         public string Payload { get; set; }
 
+        public string Data { get; set; }
+
         public MessageType Type { get; set; }
 
         public string OverrideType { get; set; }

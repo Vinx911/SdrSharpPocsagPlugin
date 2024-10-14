@@ -1,5 +1,7 @@
 ﻿using SdrsDecoder.Support;
 using System;
+using System.Collections;
+using System.Text;
 
 namespace SdrsDecoder.Pocsag
 {
@@ -104,6 +106,26 @@ namespace SdrsDecoder.Pocsag
                         CurrentMessage.AppendCodeWord(
                             this.Buffer.Buffer.ToArray(),
                             FrameIndex);
+
+                        var bitArray = new BitArray(this.Buffer.Buffer.ToArray());
+                        var byteArray = new byte[100000];
+                        bitArray.CopyTo(byteArray, 0);
+
+                        StringBuilder hexString = new StringBuilder(byteArray.Length * 3);
+                        for (int i=0;i< bitArray.Length; i+=8)
+                        {
+                            byte n = 0;
+                            for (int j = 0; j < 8; j++)
+                            {
+                                n <<= 1;
+                                if (bitArray[i + j]) {
+                                    n += 1;
+                                }
+
+                            }
+                            hexString.AppendFormat("{0:x2} ", n);
+                        }
+                        CurrentMessage.Data += hexString.ToString();
                     }
 
                     if (CodeWordInFrameIndex > 1)
@@ -123,7 +145,7 @@ namespace SdrsDecoder.Pocsag
             }
 
             // batch sync
-            if (bufferValue == 0b01111100110100100001010111011000)
+            if (bufferValue == 0b01111100110100100001010111011000 || bufferValue == 0b10000011001011011110101000100111)
             {
                 timeout = 0;
 
